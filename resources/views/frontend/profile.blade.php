@@ -43,8 +43,8 @@
                                         <div class="col-lg-4">
                                             <div class="rbt-team-thumbnail">
                                                 <div class="thumb">
-                                                    <a href="{{ $data['kabalai']->url_thumb }}" class="image-popup" title="{{ $data['kabalai']->name }}">
-                                                        <img class="w-100 rounded shadow" src="{{ $data['kabalai']->url_thumb }}" alt="{{ $data['kabalai']->thumb }}">
+                                                    <a href="{{ $data['kapuskesmas']->url_thumb }}" class="image-popup" title="{{ $data['kapuskesmas']->name }}">
+                                                        <img class="w-100 rounded shadow" src="{{ $data['kapuskesmas']->url_thumb }}" alt="{{ $data['kapuskesmas']->thumb }}">
                                                     </a>
                                                 </div>
                                             </div>
@@ -52,22 +52,22 @@
                                         <div class="col-lg-8">
                                             <div class="rbt-team-details">
                                                 <div class="author-info">
-                                                    <h4 class="title mb-3">{{ $data['kabalai']->name }}</h4>
+                                                    <h4 class="title mb-3">{{ $data['kapuskesmas']->name }}</h4>
                                                     <div class="mb-3">
                                                         <span class="d-block">Jenis Kelamin</span>
-                                                        <span class="d-block text-black">{{ $data['kabalai']->gender }}</span>
+                                                        <span class="d-block text-black">{{ $data['kapuskesmas']->gender }}</span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <span class="d-block">Status Kepegawaian</span>
-                                                        <span class="d-block text-black">{{ $data['kabalai']->employment_status }}</span>
+                                                        <span class="d-block text-black">{{ $data['kapuskesmas']->employment_status }}</span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <span class="d-block">Pangkat/ Golongan</span>
-                                                        <span class="d-block text-black">{{ $data['kabalai']->rank_grade }}</span>
+                                                        <span class="d-block text-black">{{ $data['kapuskesmas']->rank_grade }}</span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <span class="d-block">Penghargaan</span>
-                                                        <span class="d-block text-black">{!! $data['kabalai']->awards !!}</span>
+                                                        <span class="d-block text-black">{!! $data['kapuskesmas']->awards !!}</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -8,7 +8,7 @@
             <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#profileInstitution_tab">Profil</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#headOfCenter_tab">Kepala Balai</a>
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#headOfCenter_tab">Kepala Institusi</a>
         </li>
     </ul>
     <!--end:::Tabs-->
@@ -178,7 +178,7 @@
                                     <span class="input-group-text"><i class="lab la-youtube fs-1"></i></span>
                                     <input type="text" class="form-control form-control-lg form-control-solid no-space" name="youtube_channel" id="youtube_channel" placeholder="Isikan link channel youtube institusi ..." />
                                 </div>
-                                <div class="form-text">*) Contoh: <code>https://www.youtube.com/@bp2tdmempawah</code></div>
+                                <div class="form-text">*) Contoh: <code>https://www.youtube.com/@puskesmas_simpong</code></div>
                             </div>
                         </div>
                         <!--end::Input group-->
@@ -201,7 +201,7 @@
                 <!--begin::Edit-->
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start flex-wrap mb-10">
-                        <h3 class="fw-bolder m-0 mb-3"><i class="las la-pen text-dark fs-2 me-3"></i>Edit Kepala Balai</h3>
+                        <h3 class="fw-bolder m-0 mb-3"><i class="las la-pen text-dark fs-2 me-3"></i>Edit Kepala Institusi</h3>
                         <!-- <a href="javascript:history.back();" class="btn btn-sm btn btn-bg-light btn-color-danger ms-3"><i class="las la-undo fs-3"></i> Kembali</a> -->
                     </div>
                     <!--begin::Form-->
@@ -233,7 +233,7 @@
                         <div class="row mb-6">
                             <label class="col-lg-4 col-form-label required fw-bold fs-6" for="nama_kepalabalai">Nama</label>
                             <div class="col-lg-8">
-                                <input type="text" name="nama_kepalabalai" id="nama_kepalabalai" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" maxlength="225" placeholder="Isikan nama kepala balai ..." />
+                                <input type="text" name="nama_kepalabalai" id="nama_kepalabalai" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" maxlength="225" placeholder="Isikan nama Kepala Institusi ..." />
                             </div>
                         </div>
                         <!--end::Input group-->

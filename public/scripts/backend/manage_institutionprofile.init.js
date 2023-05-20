@@ -442,7 +442,7 @@ $('#btn-saveOptionSelect2').on('click', function (e) {
         }
     });
 });
-//Load Profil Kepala Balai
+//Load Profil Kepala
 const _loadHeadOfCenter = () => {
     $("#form-headOfCenter")[0].reset(), $('#avatar_remove').val(1),
     $('#iGroup-avatar .image-input-outline').addClass('image-input-empty'),
@@ -497,7 +497,7 @@ const _loadHeadOfCenter = () => {
         },
     });
 }
-//Load Avatar Profil Kepala Balai
+//Load Avatar Profil Kepala Institusi
 const _loadAvatar = (foto, url_foto) => {
     $('#iGroup-avatar .image-input-outline').removeClass('image-input-changed image-input-empty'),
     $('#avatar_remove').val(0);
@@ -509,18 +509,18 @@ const _loadAvatar = (foto, url_foto) => {
         $('#iGroup-avatar .image-input-outline .image-input-wrapper').attr('style', `background-image: url('` +url_foto+ `');`);
     }
 }
-// Handle Button Reset / Batal Form Profil Kepala Balai Institusi
+// Handle Button Reset / Batal Form Profil Kepala Institusi
 $('#btn-resetFormHeadOfCenter').on('click', function (e) {
     e.preventDefault();
     _loadHeadOfCenter();
 });
-//Handle Enter Submit Form Update Kepala Balai
+//Handle Enter Submit Form Update Kepala Institusi
 $("#form-headOfCenter input").keyup(function(event) {
     if (event.keyCode == 13 || event.key === 'Enter') {
         $("#btn-saveHeadOfCenter").click();
     }
 });
-// Handle Button Save Form Update Kepala Balai
+// Handle Button Save Form Update Kepala Institusi
 $('#btn-saveHeadOfCenter').on('click', function (e) {
     e.preventDefault();
     $('#btn-saveHeadOfCenter').html('<span class="spinner-border spinner-border-sm align-middle me-3"></span> Mohon Tunggu...').attr('disabled', true);
@@ -528,7 +528,7 @@ $('#btn-saveHeadOfCenter').on('click', function (e) {
         gender = $('#gender'), employment_status = $('#employment_status'), cbo_rank_grade = $('#cbo_rank_grade'), awards = $('#awards');
 
     if (avatar.attr('style')=='' || avatar.attr('style')=='background-image: none;' || avatar.attr('style')=='background-image: url();') {
-        toastr.error('Foto kepala balai masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
+        toastr.error('Foto Kepala Institusi masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
         $('#iGroup-avatar .image-input').addClass('border border-2 border-danger').stop().delay(1500).queue(function () {
             $(this).removeClass('border border-2 border-danger');
         });
@@ -536,7 +536,7 @@ $('#btn-saveHeadOfCenter').on('click', function (e) {
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;
     } if (nama_kepalabalai.val() == '') {
-        toastr.error('Nama kepala balai masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
+        toastr.error('Nama Kepala Institusi masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
         nama_kepalabalai.focus();
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;

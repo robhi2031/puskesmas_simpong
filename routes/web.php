@@ -48,6 +48,7 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'api'], function () {
     Route::get('/site_info', [CommonController::class, 'site_info'])->name('site_info');
     Route::get('/head_slidebanner', [FrontendController::class, 'headSlideBanner'])->name('headSlideBanner');
+    Route::get('/head_welcome', [FrontendController::class, 'contentHeadWelcome'])->name('contentHeadWelcome');
     Route::get('/show_mainpost', [FrontendController::class, 'mainPost'])->name('mainPost');
     Route::get('/widget_sidebar', [FrontendController::class, 'widgetSidebar'])->name('widgetSidebar');
     Route::get('/main_posts', [FrontendController::class, 'mainPosts'])->name('mainPosts');

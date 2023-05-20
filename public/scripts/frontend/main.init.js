@@ -41,6 +41,66 @@ const loadApp = function() {
             }
         });
     }
+    //load Head Welcome
+	const _headWelcome = () => {
+        $('#row-headWelcome').html(`<div class="col-md-3 col-sm-4">
+            <div class="thumbnail">
+                <svg class="bd-placeholder-img rounded" width="100%" height="245px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                </svg>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-8 mt_md--10 mt_sm--30">
+            <div class="content">
+                <div class="inner pe-0">
+                    <h3 class="placeholder-glow my-0 mb-5">
+                        <span class="placeholder col-12 rounded"></span>
+                    </h3>
+                    <h5 class="placeholder-glow mb-5">
+                        <span class="placeholder rounded col-12"></span>
+                        <span class="placeholder rounded col-12"></span>
+                        <span class="placeholder rounded col-8"></span>
+                    </h5>
+                    <h6 class="placeholder-glow mb-0">
+                        <span class="placeholder rounded col-4"></span>
+                    </h6>
+                    <h6 class="placeholder-glow">
+                        <span class="placeholder rounded col-4"></span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="top-circle-shape position-bottom-right"></div>`);
+        $.ajax({
+            url: base_url+ "api/head_welcome",
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                $('#row-headWelcome').html(`<div class="col-md-3 col-sm-4">
+                    <div class="thumbnail">
+                        <img src="` +data.row.url_thumb+ `" alt="` +data.row.thumb+ `">
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-8 mt_md--10 mt_sm--30">
+                    <div class="content">
+                        <div class="inner pe-0">
+                            <h4 class="title mb-3">` +data.row.text_header_welcome+ `</h4>
+                            <div class="text-body-welcome">` +data.row.text_welcome+ `</div>
+                            <ul class="contact-address">
+                                <li class="mb-0">
+                                    <strong class="text-capitalize">` +data.row.name_kapuskesmas+ `</strong>
+                                </li>
+                                <li class="mt-0 text-position-welcome text-capitalize">` +data.row.position_kapuskesmas.toLowerCase()+ `</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-circle-shape position-bottom-right"></div>`);
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                console.log('Load data is error');
+            }
+        });
+    }
     //load Blog Post Simple Section - 01 
 	const _postSimpleSection01 = () => {
         let headerTitle = `<h1 class="col-lg-6 col-md-6 col-12 placeholder-glow my-0">
@@ -478,7 +538,7 @@ const loadApp = function() {
     return {
         // public functions
         init: function() {
-            _headSlideBanner(), _postSimpleSection01(), _postSimpleSection02(), _postSimpleSection03(), _relatedLinkWithImage();
+            _headSlideBanner(), _headWelcome(), _postSimpleSection01(), _postSimpleSection02(), _postSimpleSection03(), _relatedLinkWithImage();
         }
     };
 }();
