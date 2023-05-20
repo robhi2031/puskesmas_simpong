@@ -99,37 +99,35 @@ if (! function_exists('publicMenus')) {
             "menus":[  
                 {
                     "menu": "Beranda",
-                    "icon": "fas fa-home",
                     "route_name": "/",
                     "has_child": "N"
                 },
                 {
                     "menu": "Profil",
-                    "icon": "fas fa-info",
                     "route_name": "profil",
                     "has_child": "N"
                 },
                 {
-                    "menu": "Fasilitas",
-                    "icon": "fas fa-mail-bulk",
-                    "route_name": "fasilitas",
-                    "has_child": "N"
-                },
-                {
-                    "menu": "Program Studi",
-                    "icon": "fas fa-server",
-                    "route_name": "program_studi",
-                    "has_child": "N"
-                },
-                {
-                    "menu": "Layanan",
-                    "icon": "fas fa-suitcase",
-                    "route_name": "layanan",
-                    "has_child": "N"
+                    "menu": "Informasi Pelayanan",
+                    "route_name": "",
+                    "has_child": "Y",
+                    "children":{
+                        "submenu":[
+                            {
+                                "menu": "Informasi Pelayanan",
+                                "sub_menu": "Jenis & Jadwal Pelayanan",
+                                "route_name": "jenis-dan-jadwal-pelayanan"
+                            },
+                            {
+                                "menu": "Informasi Pelayanan",
+                                "sub_menu": "Pendaftaran Online",
+                                "route_name": "pendaftaran"
+                            }
+                        ]
+                    }
                 },
                 {
                     "menu": "Publikasi",
-                    "icon": "fas fa-newspaper",
                     "route_name": "",
                     "has_child": "Y",
                     "children":{
@@ -151,6 +149,11 @@ if (! function_exists('publicMenus')) {
                             }
                         ]
                     }
+                },
+                {
+                    "menu": "Hubungi Kami",
+                    "route_name": "contact",
+                    "has_child": "N"
                 }
             ]
         }';
