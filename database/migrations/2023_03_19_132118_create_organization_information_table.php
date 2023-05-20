@@ -20,6 +20,8 @@ class CreateOrganizationInformationTable extends Migration
             $table->text('logo')->nullable();
             $table->text('profile')->nullable();
             $table->text('vision_mission')->nullable();
+            $table->string('text_header_welcome', 225)->nullable();
+            $table->text('text_welcome')->nullable();
             $table->string('phone_number', 25)->nullable();
             $table->string('email')->nullable();
             $table->string('office_address')->nullable();
