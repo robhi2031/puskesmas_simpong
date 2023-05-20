@@ -133,8 +133,12 @@ $('.dropify-upl').dropify({
 //start::Input https://
 const _loadInputLink = (inputElement) => {
     $(inputElement).change(function() {
-        if (this.value.indexOf("https://") !== 0) {
-            this.value = "https://" + this.value;
+        console.log(this.value.indexOf("mailto:"));
+        // console.log(this.value.indexOf("tel:"));
+        if (this.value.indexOf("tel:") !== 0 && this.value.indexOf("mailto:") !== 0) {
+            if (this.value.indexOf("https://") !== 0) {
+                this.value = "https://" + this.value;
+            }
         }
     });
 }
