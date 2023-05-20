@@ -130,6 +130,45 @@ class FrontendController extends Controller
         }
     }    
     /**
+     * contentHeadWelcome
+     *
+     * @return void
+     */
+    public function contentHeadWelcome() {
+        try {
+            $getSiteInfo = $this->get_siteinfo();
+            $getKapuskesmas = DB::table('organization_team')->where('position', 'KEPALA PUSKESMAS')->first();
+            if($getKapuskesmas != null){
+                //Thumb Kepala Puskesmas
+                $thumbKapuskesmas = $getKapuskesmas->thumb;
+                if($thumbKapuskesmas==''){
+                    $getKapuskesmas->url_thumb = asset('dist/img/default-user-img.jpg');
+                } else {
+                    if (!file_exists(public_path(). '/dist/img/organization-img/'.$thumbKapuskesmas)){
+                        $getKapuskesmas->url_thumb = asset('dist/img/default-user-img.jpg');
+                        $getKapuskesmas->thumb = NULL;
+                    }else{
+                        $getKapuskesmas->url_thumb = url('dist/img/organization-img/'.$thumbKapuskesmas);
+                    }
+                }
+            }
+            $organization_info = $getSiteInfo->organization_info;
+            $output = [
+                'text_header_welcome' => $organization_info->text_header_welcome,
+                'text_welcome' => $organization_info->text_welcome,
+                'name_kapuskesmas' => $getKapuskesmas->name,
+                'position_kapuskesmas' => $getKapuskesmas->position,
+                'thumb' => $getKapuskesmas->thumb,
+                'url_thumb' => $getKapuskesmas->url_thumb
+            ];
+            return jsonResponse(true, 'Success', 200, $output);
+        } catch (Exception $exception) {
+            return jsonResponse(false, $exception->getMessage(), 401, [
+                "Trace" => $exception->getTrace()
+            ]);
+        }
+    }
+    /**
      * relatedLink
      *
      * @return void
@@ -698,18 +737,18 @@ class FrontendController extends Controller
      */
     public function profile() {
         $getSiteInfo = $this->get_siteinfo();
-        $getKabalai = DB::table('organization_team')->where('position', 'KEPALA BALAI')->first();
-        if($getKabalai != null){
-            //Thumb Kepala Balai
-            $thumbKabalai = $getKabalai->thumb;
-            if($thumbKabalai==''){
-                $getKabalai->url_thumb = asset('dist/img/default-user-img.jpg');
+        $getKapuskesmas = DB::table('organization_team')->where('position', 'KEPALA PUSKESMAS')->first();
+        if($getKapuskesmas != null){
+            //Thumb Kepala Puskesmas
+            $thumbKapuskesmas = $getKapuskesmas->thumb;
+            if($thumbKapuskesmas==''){
+                $getKapuskesmas->url_thumb = asset('dist/img/default-user-img.jpg');
             } else {
-                if (!file_exists(public_path(). '/dist/img/organization-img/'.$thumbKabalai)){
-                    $getKabalai->url_thumb = asset('dist/img/default-user-img.jpg');
-                    $getKabalai->thumb = NULL;
+                if (!file_exists(public_path(). '/dist/img/organization-img/'.$thumbKapuskesmas)){
+                    $getKapuskesmas->url_thumb = asset('dist/img/default-user-img.jpg');
+                    $getKapuskesmas->thumb = NULL;
                 }else{
-                    $getKabalai->url_thumb = url('dist/img/organization-img/'.$thumbKabalai);
+                    $getKapuskesmas->url_thumb = url('dist/img/organization-img/'.$thumbKapuskesmas);
                 }
             }
         }
@@ -717,14 +756,14 @@ class FrontendController extends Controller
         $data = array(
             'title' => 'Profil - ' .$getSiteInfo->name,
             'desc' => $getSiteInfo->organization_info->short_description,
-            'keywords' => 'profil, profil kabalai, ' .$getSiteInfo->keyword,
+            'keywords' => 'profil, profil kapuskesmas, ' .$getSiteInfo->keyword,
             'url' => url()->current(),
             'thumb' => $getSiteInfo->url_thumb,
             'app_version' => config('app.version'),
             'app_name' => $getSiteInfo->name,
             'organization_name' => $getSiteInfo->organization_info->name,
             'organization' => $getSiteInfo->organization_info,
-            'kabalai' => $getKabalai,
+            'kapuskesmas' => $getKapuskesmas,
         );
         //Data Source CSS
         $data['css'] = array(
