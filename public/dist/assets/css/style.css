@@ -10561,7 +10561,7 @@ Primary style
   margin-left: 4px;
 }
 .rbt-information-list li a:hover {
-  color: var(--color-badge-2);
+  color: var(--color-secondary);
 }
 .popup-mobile-menu .rbt-information-list li a:hover {
   color: var(--color-primary);
