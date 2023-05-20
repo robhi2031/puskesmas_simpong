@@ -1,7 +1,7 @@
 @extends('frontend.layouts', ['activeMenu' => 'Beranda', 'activeSubMenu' => ''])
 @section('content')
 <!-- Start Our Banner Area  -->
-<div class="rbt-banner-area pt--50">
+<div class="rbt-banner-area pt_md--50 pt_sm--30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -24,7 +24,36 @@
         </div>
     </div>
 </div>
-<!-- End Our Banner Area  -->
+<div class="about-style-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row row--0 about-wrapper align-items-top theme-shape">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="thumbnail">
+                            <img src="{{ asset('dist/img/site-img/sambutan-leader.jpg') }}" alt="About Images">
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-8 mt_md--10 mt_sm--30">
+                        <div class="content">
+                            <div class="inner pe-0">
+                                <h4 class="title mb-3">Selamat Datang di Website Resmi <span class="color-primary">Puskesmas Simpong</span><br/>Kab. Banggai</h4>
+                                <p>Are you new to PHP or need a refresher? Then this course will help you get all the fundamentals of Procedural PHP, Object Oriented PHP, MYSQLi and ending the course by building a CMS system similar to WordPress, Joomla or Drupal. Knowing PHP has allowed me to make enough money to stay home and make courses like this one for students all over the world.</p>
+                                <ul class="contact-address">
+                                    <li class="mb-0">
+                                        <strong>Nama Kepala Puskesmas</strong>
+                                    </li>
+                                    <li class="mt-0">Kepala Puskesmas Simpong</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-circle-shape position-bottom-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Start Post Area  -->
 <div class="rbt-course-area rbt-section-gap pt--50" id="postSimpleSection-01">
     <div class="container">
