@@ -73,7 +73,7 @@
                             {{-- @php dd($menu) @endphp --}}
                             @if (isset($menu['children']) AND $menu['has_child'] == 'Y' )
                                 <li class="has-dropdown has-menu-child-item {{ $activeMenu == $menu['menu'] ? 'active' : '' }}">
-                                    <a href="javascript:void(0);"><b class="{{ $menu['icon'] }} me-2"></b>{{ $menu['menu'] }}
+                                    <a href="javascript:void(0);">{{ $menu['menu'] }}
                                         <i class="feather-chevron-down"></i>
                                     </a>
                                     <ul class="submenu">
@@ -84,7 +84,7 @@
                                 </li>
                             @else
                                 <li class="position-static {{ $activeMenu == $menu['menu'] ? 'active' : '' }}">
-                                    <a href="{{ url($menu['route_name']) }}"><b class="{{ $menu['icon'] }} me-2"></b>{{ $menu['menu'] }}</a>
+                                    <a href="{{ url($menu['route_name']) }}">{{ $menu['menu'] }}</a>
                                 </li>
                             @endif
                             @endforeach
