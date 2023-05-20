@@ -465,7 +465,7 @@ const _loadHeadOfCenter = () => {
             blockUi.release(), blockUi.destroy();
             if (data.status == true) {
                 _loadAvatar(data.row.thumb, data.row.url_thumb),
-                $('#nama_kepalabalai').val(data.row.name),
+                $('#nama_kepalapuskesmas').val(data.row.name),
                 $('#gender').selectpicker('val', data.row.gender),
                 _loadSelectpicker_employmentStatus(data.row.employment_status);
                 _cboRankGradesSelest2();
@@ -476,6 +476,8 @@ const _loadHeadOfCenter = () => {
                 //Summernote CopyRight
                 let awards = data.row.awards;
                 $('#awards').summernote('code', awards);
+                $('#text_header_welcome').val(data.row.text_header_welcome),
+                $('#text_welcome').val(data.row.text_welcome);
             } else {
                 Swal.fire({title: "Ooops!", text: data.message, icon: "warning", allowOutsideClick: false});
             }
@@ -524,8 +526,8 @@ $("#form-headOfCenter input").keyup(function(event) {
 $('#btn-saveHeadOfCenter').on('click', function (e) {
     e.preventDefault();
     $('#btn-saveHeadOfCenter').html('<span class="spinner-border spinner-border-sm align-middle me-3"></span> Mohon Tunggu...').attr('disabled', true);
-    let avatar = $('#iGroup-avatar .image-input-wrapper'), nama_kepalabalai = $('#nama_kepalabalai'),
-        gender = $('#gender'), employment_status = $('#employment_status'), cbo_rank_grade = $('#cbo_rank_grade'), awards = $('#awards');
+    let avatar = $('#iGroup-avatar .image-input-wrapper'), nama_kepalapuskesmas = $('#nama_kepalapuskesmas'),
+        gender = $('#gender'), employment_status = $('#employment_status'), cbo_rank_grade = $('#cbo_rank_grade'), awards = $('#awards'), text_header_welcome = $('#text_header_welcome'), text_welcome = $('#text_welcome');
 
     if (avatar.attr('style')=='' || avatar.attr('style')=='background-image: none;' || avatar.attr('style')=='background-image: url();') {
         toastr.error('Foto Kepala Institusi masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
@@ -535,9 +537,9 @@ $('#btn-saveHeadOfCenter').on('click', function (e) {
         $('#avatar').focus();
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;
-    } if (nama_kepalabalai.val() == '') {
+    } if (nama_kepalapuskesmas.val() == '') {
         toastr.error('Nama Kepala Institusi masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
-        nama_kepalabalai.focus();
+        nama_kepalapuskesmas.focus();
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;
     } if (gender.val() == '') {
@@ -561,9 +563,19 @@ $('#btn-saveHeadOfCenter').on('click', function (e) {
         cbo_rank_grade.focus();
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;
-    } if (awards.val() == '') {
+    } if (awards.summernote('isEmpty')) {
         toastr.error('Penghargaan masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
         awards.focus();
+        $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
+        return false;
+    } if (text_header_welcome.val() == '') {
+        toastr.error('Text judul sambutan masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
+        text_header_welcome.focus();
+        $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
+        return false;
+    } if (text_welcome.val() == '') {
+        toastr.error('Text isi sambutan masih kosong...', 'Uuppss!', {"progressBar": true, "timeOut": 1500});
+        text_welcome.focus();
         $('#btn-saveHeadOfCenter').html('<i class="las la-save fs-1 me-3"></i>Simpan').attr('disabled', false);
         return false;
     }

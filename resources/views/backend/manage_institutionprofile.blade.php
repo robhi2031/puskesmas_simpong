@@ -231,9 +231,9 @@
                         </div>
                         <!--begin::Input group-->
                         <div class="row mb-6">
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6" for="nama_kepalabalai">Nama</label>
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6" for="nama_kepalapuskesmas">Nama</label>
                             <div class="col-lg-8">
-                                <input type="text" name="nama_kepalabalai" id="nama_kepalabalai" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" maxlength="225" placeholder="Isikan nama Kepala Institusi ..." />
+                                <input type="text" name="nama_kepalapuskesmas" id="nama_kepalapuskesmas" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" maxlength="225" placeholder="Isikan nama Kepala Institusi ..." />
                             </div>
                         </div>
                         <!--end::Input group-->
@@ -293,6 +293,22 @@
                             <label class="col-lg-4 col-form-label required fw-bold fs-6" for="awards">Penghargaan</label>
                             <div class="col-lg-8">
                                 <textarea name="awards" id="awards" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"></textarea>
+                            </div>
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="row mb-6">
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6" for="text_header_welcome">Text Judul Sambutan</label>
+                            <div class="col-lg-8">
+                                <textarea name="text_header_welcome" id="text_header_welcome" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" rows="2" maxlength="225" placeholder="Isikan judul sambutan kepala instansi ..."></textarea>
+                            </div>
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="row mb-6">
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6" for="text_welcome">Text Isi Sambutan</label>
+                            <div class="col-lg-8">
+                                <textarea name="text_welcome" id="text_welcome" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" rows="6" maxlength="400" placeholder="Isikan isi sambutan kepala instansi ..."></textarea>
                             </div>
                         </div>
                         <!--end::Input group-->

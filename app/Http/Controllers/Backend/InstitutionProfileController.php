@@ -72,9 +72,10 @@ class InstitutionProfileController extends Controller
         try {
             if(isset($request->tab_method)){
                 if($request->tab_method=='headOfCenter_tab') {
-                    $getRow = DB::table('organization_team')->where('position', 'KEPALA BALAI')->first();
+                    $getOrganizationInformation = DB::table('organization_information')->where('id', 1)->first();
+                    $getRow = DB::table('organization_team')->where('position', 'KEPALA PUSKESMAS')->first();
                     if($getRow != null){
-                        //Thumb Kepala Balai
+                        //Thumb Kepala Puskesmas
                         $thumb = $getRow->thumb;
                         if($thumb==''){
                             $getRow->url_thumb = NULL;
@@ -86,6 +87,9 @@ class InstitutionProfileController extends Controller
                                 $getRow->url_thumb = url('dist/img/organization-img/'.$thumb);
                             }
                         }
+                        //Header Welcome
+                        $getRow->text_header_welcome = $getOrganizationInformation->text_header_welcome;
+                        $getRow->text_welcome = $getOrganizationInformation->text_welcome;
                         return jsonResponse(true, 'Success', 200, $getRow);
                     } else {
                         return jsonResponse(false, "Credentials not match", 401);
@@ -142,7 +146,7 @@ class InstitutionProfileController extends Controller
             if($request->tab_method=='headOfCenter_tab') {
                 $form = [
                     'avatar' => 'mimes:png,jpg,jpeg|max:2048',
-                    'nama_kepalabalai' => 'required|max:225',
+                    'nama_kepalapuskesmas' => 'required|max:225',
                     'gender' => 'required',
                     'employment_status' => 'required',
                     'cbo_rank_grade' => 'required',
@@ -153,7 +157,7 @@ class InstitutionProfileController extends Controller
                 try {
                     //array data
                     $data = array(
-                        'name' => $request->nama_kepalabalai,
+                        'name' => $request->nama_kepalapuskesmas,
                         'gender' => $request->gender,
                         'employment_status' => $request->employment_status,
                         'rank_grade' => $request->cbo_rank_grade,
@@ -166,8 +170,8 @@ class InstitutionProfileController extends Controller
                         //Cek and Create Destination Path
                         if(!is_dir($destinationPath)){ mkdir($destinationPath, 0755, TRUE); }
                         //Get & Cek File
-                        $getFile = DB::table('organization_team')->where('position', 'KEPALA BALAI')->first();
-                        //Foto Kepala Balai
+                        $getFile = DB::table('organization_team')->where('position', 'KEPALA PUSKESMAS')->first();
+                        //Foto Kepala Puskesmas
                         if(!empty($_FILES['avatar']['name'])){
                             if($getFile==true) {
                                 $getFileThumb = $destinationPath.'/'.$getFile->thumb;
@@ -178,11 +182,17 @@ class InstitutionProfileController extends Controller
                             $data['thumb'] = $doUploadFile['file_name'];
                         }
                     }
-        
-                    DB::table('organization_team')->where('position', 'KEPALA BALAI')->update($data);
+                    //Array Data Header Welcome
+                    $dataHeaderWelcome = array(
+                        'text_header_welcome' => $request->text_header_welcome,
+                        'text_welcome' => $request->text_welcome,
+                        'user_updated' => $userSesIdp
+                    );
+                    DB::table('organization_information')->whereId(1)->update($dataHeaderWelcome);
+                    DB::table('organization_team')->where('position', 'KEPALA PUSKESMAS')->update($data);
                     addToLog('Head of center institution has been successfully updated');
                     DB::commit();
-                    return jsonResponse(true, 'Profil Kepala Balai berhasil diperbarui', 200);
+                    return jsonResponse(true, 'Profil Kepala Puskesmas berhasil diperbarui', 200);
                 } catch (Exception $exception) {
                     DB::rollBack();
                     return jsonResponse(false, $exception->getMessage(), 401, [
