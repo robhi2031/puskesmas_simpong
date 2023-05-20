@@ -464,9 +464,10 @@ class PostsController extends Controller
             );
             //Upload File
             if(!empty($_FILES['thumb']['name'])) {
-                $nowMY = date('mY');
+                $getFile = Posts::selectRaw('posts.*, DATE_FORMAT(posts.created_at, "%m%Y") AS mY_post')->whereId($request->id)->first();
+                // $nowMY = date('mY');
+                $nowMY = $getFile->mY_post;
                 $destinationPath = public_path('/dist/img/posts-img/'.$nowMY);
-                $getFile = Posts::whereId($request->id)->first();
                 $getFileImage = $destinationPath.'/'.$getFile->thumb;
 
                 if(file_exists($getFileImage) && $getFile->thumb)
