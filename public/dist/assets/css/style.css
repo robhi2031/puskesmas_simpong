@@ -8181,7 +8181,7 @@ textarea:-ms-input-placeholder {
   top: -250px;
   right: -250px;
   bottom: auto;
-  background-image: linear-gradient(45deg, var(--color-violet), var(--color-pink));
+  background-image: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
 }
 
 .rbt-round-bottom-shape {
@@ -28771,6 +28771,54 @@ hr.divider-1 {
   z-index: 1;
   font-size: 24px;
   background-color: transparent;
+}
+.about-style-3 {
+  position: relative;
+  z-index: 2;
+}
+.about-style-3 .about-wrapper {
+  margin-top: -50px;
+  background: var(--color-white);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: var(--shadow-1);
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about-style-3 .about-wrapper {
+    margin-top: 80px;
+    padding: 15px 15px 30px 15px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .about-style-3 .about-wrapper {
+    margin-top: 30px;
+    padding: 15px 15px 30px 15px;
+  }
+}
+.about-style-3 .about-wrapper .thumbnail img {
+  border-radius: 10px;
+  width: 100%;
+}
+.about-style-3 .about-wrapper .content .inner {
+  padding: 0 40px;
+}
+@media only screen and (max-width: 767px) {
+  .about-style-3 .about-wrapper .content .inner {
+    padding: 0;
+  }
+}
+.about-style-3 .about-wrapper .content .inner .title {
+  font-size: 24px;
+  margin-bottom: 22px;
+}
+@media only screen and (max-width: 767px) {
+  .about-style-3 .about-wrapper .content .inner .title {
+    font-size: 21px;
+  }
+}
+.about-style-3 .about-wrapper .content .inner p {
+  margin-bottom: 20px;
+  width: 80%;
 }
 /* end Custom Style*/
 /*# sourceMappingURL=../maps/style.css.map */
