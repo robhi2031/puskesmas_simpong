@@ -2,8 +2,10 @@
 /**************************************
     Default Styles
 ***************************************/
-/*-- Variables --*/
+/*-- Import Fonts --*/
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900");
+/*-- Variables --*/
 :root {
   --color-primary: #009e3b;
   --color-secondary: #00197e;
@@ -28777,7 +28779,7 @@ hr.divider-1 {
   z-index: 2;
 }
 .about-style-3 .about-wrapper {
-  margin-top: -50px;
+  margin-top: -35px;
   background: var(--color-white);
   border-radius: 10px;
   padding: 15px;
@@ -28785,7 +28787,7 @@ hr.divider-1 {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .about-style-3 .about-wrapper {
-    margin-top: 80px;
+    margin-top: 50px;
     padding: 15px 15px 30px 15px;
   }
 }
@@ -28816,9 +28818,11 @@ hr.divider-1 {
     font-size: 21px;
   }
 }
-.about-style-3 .about-wrapper .content .inner p {
-  margin-bottom: 20px;
-  width: 80%;
+.about-style-3 .about-wrapper .content .inner .text-body-welcome {
+  margin-bottom: 30px;
+}
+.about-style-3 .about-wrapper .content .inner .text-position-welcome {
+  font-family: lato,sans-serif;
 }
 /* end Custom Style*/
 /*# sourceMappingURL=../maps/style.css.map */
