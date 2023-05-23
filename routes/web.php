@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\UserProfileController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\InstitutionFacilitiesController;
 use App\Http\Controllers\Backend\InstitutionProfileController;
-use App\Http\Controllers\Backend\InstitutionServicesController;
+use App\Http\Controllers\Backend\InstitutionServiceController;
 use App\Http\Controllers\Backend\InstitutionStudyProgramsController;
 use App\Http\Controllers\Backend\PermissionsController;
 use App\Http\Controllers\Backend\RelatedLinksController;
@@ -35,9 +35,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/all/{type}', [FrontendController::class, 'posts'])->name('posts');
 Route::get('/read/{slug}', [FrontendController::class, 'read_post'])->name('read_post');
 Route::get('/profil', [FrontendController::class, 'profile'])->name('profile');
-Route::get('/fasilitas', [FrontendController::class, 'facilities'])->name('facilities');
-Route::get('/program_studi', [FrontendController::class, 'study_programs'])->name('study_programs');
-Route::get('/layanan', [FrontendController::class, 'services'])->name('services');
+Route::get('/p/{slug}', [FrontendController::class, 'pages'])->name('pages');
 // Auth Login
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -74,7 +72,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/manage_institutionprofile', [InstitutionProfileController::class, 'index'])->name('manage_institutionprofile');
         Route::get('/manage_institutionfacilities', [InstitutionFacilitiesController::class, 'index'])->name('manage_institutionfacilities');
-        Route::get('/manage_institutionservices', [InstitutionServicesController::class, 'index'])->name('manage_institutionservices');
+        Route::get('/manage_institutionservice', [InstitutionServiceController::class, 'index'])->name('manage_institutionservice');
         Route::get('/manage_institutionstudyprograms', [InstitutionStudyProgramsController::class, 'index'])->name('manage_institutionstudyprograms');
         Route::get('/manage_bannerslides', [BannerSlidesController::class, 'index'])->name('manage_bannerslides');
         Route::get('/manage_relatedlinks', [RelatedLinksController::class, 'index'])->name('manage_relatedlinks');
@@ -98,24 +96,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/manage_institutionprofile/select2_position', [InstitutionProfileController::class, 'select2_position'])->name('select2_position');
         Route::post('/manage_institutionprofile/update', [InstitutionProfileController::class, 'update'])->name('update_institutionprofile');
         Route::post('/manage_institutionprofile/update_itemoptionselect2', [InstitutionProfileController::class, 'update_itemoptionselect2'])->name('update_itemoptionselect2');
-        //Manage Fasilitas Institusi
-        Route::get('/manage_institutionfacilities/show', [InstitutionFacilitiesController::class, 'show'])->name('show_institutionfacilities');
-        Route::post('/manage_institutionfacilities/store', [InstitutionFacilitiesController::class, 'store'])->name('store_institutionfacilities');
-        Route::post('/manage_institutionfacilities/update', [InstitutionFacilitiesController::class, 'update'])->name('update_institutionfacilities');
-        Route::post('/manage_institutionfacilities/update_status', [InstitutionFacilitiesController::class, 'update_status'])->name('update_statusinstitutionfacilities');
-        Route::post('/manage_institutionfacilities/delete', [InstitutionFacilitiesController::class, 'delete'])->name('delete_institutionfacilities');
         //Manage Layanan Institusi
-        Route::get('/manage_institutionservices/show', [InstitutionServicesController::class, 'show'])->name('show_institutionservices');
-        Route::post('/manage_institutionservices/store', [InstitutionServicesController::class, 'store'])->name('store_institutionservices');
-        Route::post('/manage_institutionservices/update', [InstitutionServicesController::class, 'update'])->name('update_institutionservices');
-        Route::post('/manage_institutionservices/update_status', [InstitutionServicesController::class, 'update_status'])->name('update_statusinstitutionservices');
-        Route::post('/manage_institutionservices/delete', [InstitutionServicesController::class, 'delete'])->name('delete_institutionservices');
-        //Manage Program Studi Institusi
-        Route::get('/manage_institutionstudyprograms/show', [InstitutionStudyProgramsController::class, 'show'])->name('show_institutionstudyprograms');
-        Route::post('/manage_institutionstudyprograms/store', [InstitutionStudyProgramsController::class, 'store'])->name('store_institutionstudyprograms');
-        Route::post('/manage_institutionstudyprograms/update', [InstitutionStudyProgramsController::class, 'update'])->name('update_institutionstudyprograms');
-        Route::post('/manage_institutionstudyprograms/update_status', [InstitutionStudyProgramsController::class, 'update_status'])->name('update_statusinstitutionstudyprograms');
-        Route::post('/manage_institutionstudyprograms/delete', [InstitutionStudyProgramsController::class, 'delete'])->name('delete_institutionstudyprograms');
+        Route::get('/manage_institutionservice/show', [InstitutionServiceController::class, 'show'])->name('show_institutionservice');
+        Route::post('/manage_institutionservice/update', [InstitutionServiceController::class, 'update'])->name('update_institutionservice');
+        Route::post('/manage_institutionservice/delete', [InstitutionServiceController::class, 'delete'])->name('delete_institutionservice');
         //Manage Banner Slides
         Route::get('/manage_bannerslides/show', [BannerSlidesController::class, 'show'])->name('show_bannerslides');
         Route::post('/manage_bannerslides/store', [BannerSlidesController::class, 'store'])->name('store_bannerslides');
