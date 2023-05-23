@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Facilities;
 use App\Models\Posts;
+use App\Models\PublicPages;
 use App\Models\Services;
 use App\Models\StudyPrograms;
 use App\Traits\SiteCommon;
@@ -813,23 +814,30 @@ class FrontendController extends Controller
 
         addToLog('Mengakses halaman profil - Public');
         return view('frontend.profile', compact('data'));
-    }    
+    }     
     /**
-     * facilities
+     * pages
      *
      * @return void
      */
-    public function facilities() {
+    public function pages() {
         $getSiteInfo = $this->get_siteinfo();
+        $urlPage = url()->current();
+        $slug = substr(strrchr(rtrim($urlPage, '/'), '/'), 1);
+        $getPage = PublicPages::where('slug', $slug)->first();
+        if($getPage == null){
+            return abort(404);
+        }
         //Data WebInfo
         $data = array(
-            'title' => 'Fasilitas - ' .$getSiteInfo->name,
+            'title' => $getPage->title.' - ' .$getSiteInfo->name,
             'desc' => $getSiteInfo->organization_info->short_description,
-            'keywords' => 'fasilitas, ' .$getSiteInfo->keyword,
+            'keywords' => $getSiteInfo->keyword,
             'url' => url()->current(),
             'thumb' => $getSiteInfo->url_thumb,
             'app_version' => config('app.version'),
-            'app_name' => $getSiteInfo->name
+            'app_name' => $getSiteInfo->name,
+            'dtl_page' => $getPage
         );
         //Data Source CSS
         $data['css'] = array(
@@ -874,279 +882,12 @@ class FrontendController extends Controller
             'dist/assets/js/vendor/paralax.min.js',
             'dist/assets/js/vendor/countdown.js',
             'dist/assets/js/scripts.bundle.js',
-            'scripts/frontend/facilities.init.js'
+            'scripts/frontend/profile.init.js'
         );
 
-        addToLog('Mengakses halaman Fasilitas - Public');
-        return view('frontend.facilities', compact('data'));
-    }
-    /**
-     * mainFacilities
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function mainFacilities(Request $request) {
-        try {
-            $getRows = Facilities::orderByDesc('id')->where('is_public', 'Y')->get();
-
-            $result = array();
-            if(count($getRows)>0){
-                foreach ($getRows as $row) {
-                    //File Image
-                    $thumb = $row->thumb;
-                    if($thumb==''){
-                        $url_thumb = url('dist/img/default-placeholder.png');
-                        $thumb = 'default-placeholder.png';
-                    } else {
-                        if (!file_exists(public_path(). '/dist/img/facilities-img/'.$thumb)){
-                            $url_thumb = url('dist/img/default-placeholder.png');
-                            $thumb = 'default-placeholder.png';
-                        }else{
-                            $url_thumb = url('dist/img/facilities-img/'.$thumb);
-                        }
-                    }
-                    //Data Array
-                    $result[] = [
-                        'id' => $row->id,
-                        'name' => $row->name,
-                        'thumb' => $thumb,
-                        'url_thumb' => $url_thumb,
-                        'description' => $row->description
-                    ];
-                }
-            } else {
-                $result = null;
-            }
-            return jsonResponse(true, 'Success', 200, $result);
-        } catch (Exception $exception) {
-            return jsonResponse(false, $exception->getMessage(), 401, [
-                "Trace" => $exception->getTrace()
-            ]);
-        }
-    }
-    /**
-     * services
-     *
-     * @return void
-     */
-    public function services() {
-        $getSiteInfo = $this->get_siteinfo();
-        //Data WebInfo
-        $data = array(
-            'title' => 'Layanan - ' .$getSiteInfo->name,
-            'desc' => $getSiteInfo->organization_info->short_description,
-            'keywords' => 'layanan, ' .$getSiteInfo->keyword,
-            'url' => url()->current(),
-            'thumb' => $getSiteInfo->url_thumb,
-            'app_version' => config('app.version'),
-            'app_name' => $getSiteInfo->name
-        );
-        //Data Source CSS
-        $data['css'] = array(
-            'dist/plugins/bootstrap-5.3.0-alpha3/css/bootstrap.min.css',
-            'dist/assets/css/vendor/slick.css',
-            'dist/assets/css/vendor/slick-theme.css',
-            'dist/assets/css/plugins/sal.css',
-            'dist/assets/css/plugins/feather.css',
-            'dist/assets/css/plugins/fontawesome.min.css',
-            'dist/assets/css/plugins/euclid-circulara.css',
-            'dist/assets/css/plugins/swiper.css',
-            'dist/assets/css/plugins/magnify.css',
-            'dist/assets/css/plugins/odometer.css',
-            'dist/assets/css/plugins/animation.css',
-            'dist/assets/css/plugins/bootstrap-select.min.css',
-            'dist/assets/css/plugins/jquery-ui.css',
-            'dist/assets/css/plugins/magnigy-popup.min.css',
-            'dist/assets/css/style.css',
-        );
-        //Data Source JS
-        $data['js'] = array(
-            'dist/assets/js/vendor/modernizr.min.js',
-            'dist/assets/js/vendor/jquery.js',
-            'dist/plugins/bootstrap-5.3.0-alpha3/js/bootstrap.bundle.min.js',
-            'dist/assets/js/vendor/sal.js',
-            'dist/assets/js/vendor/swiper.js',
-            'dist/assets/js/vendor/magnify.min.js',
-            'dist/assets/js/vendor/jquery-appear.js',
-            'dist/assets/js/vendor/odometer.js',
-            'dist/assets/js/vendor/backtotop.js',
-            'dist/assets/js/vendor/isotop.js',
-            'dist/assets/js/vendor/imageloaded.js',
-            'dist/assets/js/vendor/wow.js',
-            'dist/assets/js/vendor/waypoint.min.js',
-            'dist/assets/js/vendor/easypie.js',
-            'dist/assets/js/vendor/text-type.js',
-            'dist/assets/js/vendor/jquery-one-page-nav.js',
-            'dist/assets/js/vendor/bootstrap-select.min.js',
-            'dist/assets/js/vendor/jquery-ui.js',
-            'dist/assets/js/vendor/magnify-popup.min.js',
-            'dist/assets/js/vendor/paralax-scroll.js',
-            'dist/assets/js/vendor/paralax.min.js',
-            'dist/assets/js/vendor/countdown.js',
-            'dist/assets/js/scripts.bundle.js',
-            'scripts/frontend/services.init.js'
-        );
-
-        addToLog('Mengakses halaman Layanan - Public');
-        return view('frontend.services', compact('data'));
-    }    
-    /**
-     * mainServices
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function mainServices(Request $request) {
-        try {
-            $getRows = Services::orderByDesc('id')->where('is_public', 'Y')->get();
-
-            $result = array();
-            if(count($getRows)>0){
-                foreach ($getRows as $row) {
-                    //File Image
-                    $thumb = $row->thumb;
-                    if($thumb==''){
-                        $url_thumb = url('dist/img/default-placeholder.png');
-                        $thumb = 'default-placeholder.png';
-                    } else {
-                        if (!file_exists(public_path(). '/dist/img/services-img/'.$thumb)){
-                            $url_thumb = url('dist/img/default-placeholder.png');
-                            $thumb = 'default-placeholder.png';
-                        }else{
-                            $url_thumb = url('dist/img/services-img/'.$thumb);
-                        }
-                    }
-                    //Data Array
-                    $result[] = [
-                        'id' => $row->id,
-                        'name' => $row->name,
-                        'thumb' => $thumb,
-                        'url_thumb' => $url_thumb,
-                        'description' => $row->description
-                    ];
-                }
-            } else {
-                $result = null;
-            }
-            return jsonResponse(true, 'Success', 200, $result);
-        } catch (Exception $exception) {
-            return jsonResponse(false, $exception->getMessage(), 401, [
-                "Trace" => $exception->getTrace()
-            ]);
-        }
-    }
-    /**
-     * study_programs
-     *
-     * @return void
-     */
-    public function study_programs() {
-        $getSiteInfo = $this->get_siteinfo();
-        //Data WebInfo
-        $data = array(
-            'title' => 'Program Studi - ' .$getSiteInfo->name,
-            'desc' => $getSiteInfo->organization_info->short_description,
-            'keywords' => 'program studi, ' .$getSiteInfo->keyword,
-            'url' => url()->current(),
-            'thumb' => $getSiteInfo->url_thumb,
-            'app_version' => config('app.version'),
-            'app_name' => $getSiteInfo->name
-        );
-        //Data Source CSS
-        $data['css'] = array(
-            'dist/plugins/bootstrap-5.3.0-alpha3/css/bootstrap.min.css',
-            'dist/assets/css/vendor/slick.css',
-            'dist/assets/css/vendor/slick-theme.css',
-            'dist/assets/css/plugins/sal.css',
-            'dist/assets/css/plugins/feather.css',
-            'dist/assets/css/plugins/fontawesome.min.css',
-            'dist/assets/css/plugins/euclid-circulara.css',
-            'dist/assets/css/plugins/swiper.css',
-            'dist/assets/css/plugins/magnify.css',
-            'dist/assets/css/plugins/odometer.css',
-            'dist/assets/css/plugins/animation.css',
-            'dist/assets/css/plugins/bootstrap-select.min.css',
-            'dist/assets/css/plugins/jquery-ui.css',
-            'dist/assets/css/plugins/magnigy-popup.min.css',
-            'dist/assets/css/style.css',
-        );
-        //Data Source JS
-        $data['js'] = array(
-            'dist/assets/js/vendor/modernizr.min.js',
-            'dist/assets/js/vendor/jquery.js',
-            'dist/plugins/bootstrap-5.3.0-alpha3/js/bootstrap.bundle.min.js',
-            'dist/assets/js/vendor/sal.js',
-            'dist/assets/js/vendor/swiper.js',
-            'dist/assets/js/vendor/magnify.min.js',
-            'dist/assets/js/vendor/jquery-appear.js',
-            'dist/assets/js/vendor/odometer.js',
-            'dist/assets/js/vendor/backtotop.js',
-            'dist/assets/js/vendor/isotop.js',
-            'dist/assets/js/vendor/imageloaded.js',
-            'dist/assets/js/vendor/wow.js',
-            'dist/assets/js/vendor/waypoint.min.js',
-            'dist/assets/js/vendor/easypie.js',
-            'dist/assets/js/vendor/text-type.js',
-            'dist/assets/js/vendor/jquery-one-page-nav.js',
-            'dist/assets/js/vendor/bootstrap-select.min.js',
-            'dist/assets/js/vendor/jquery-ui.js',
-            'dist/assets/js/vendor/magnify-popup.min.js',
-            'dist/assets/js/vendor/paralax-scroll.js',
-            'dist/assets/js/vendor/paralax.min.js',
-            'dist/assets/js/vendor/countdown.js',
-            'dist/assets/js/scripts.bundle.js',
-            'scripts/frontend/study_programs.init.js'
-        );
-
-        addToLog('Mengakses halaman Program Studi - Public');
-        return view('frontend.study_programs', compact('data'));
-    }    
-    /**
-     * mainStudyPrograms
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function mainStudyPrograms(Request $request) {
-        try {
-            $getRows = StudyPrograms::orderByDesc('id')->where('is_public', 'Y')->get();
-
-            $result = array();
-            if(count($getRows)>0){
-                foreach ($getRows as $row) {
-                    //File Image
-                    $thumb = $row->thumb;
-                    if($thumb==''){
-                        $url_thumb = url('dist/img/default-placeholder.png');
-                        $thumb = 'default-placeholder.png';
-                    } else {
-                        if (!file_exists(public_path(). '/dist/img/study-programs-img/'.$thumb)){
-                            $url_thumb = url('dist/img/default-placeholder.png');
-                            $thumb = 'default-placeholder.png';
-                        }else{
-                            $url_thumb = url('dist/img/study-programs-img/'.$thumb);
-                        }
-                    }
-                    //Data Array
-                    $result[] = [
-                        'id' => $row->id,
-                        'name' => $row->name,
-                        'thumb' => $thumb,
-                        'url_thumb' => $url_thumb,
-                        'description' => $row->description
-                    ];
-                }
-            } else {
-                $result = null;
-            }
-            return jsonResponse(true, 'Success', 200, $result);
-        } catch (Exception $exception) {
-            return jsonResponse(false, $exception->getMessage(), 401, [
-                "Trace" => $exception->getTrace()
-            ]);
-        }
-    }    
+        addToLog('Mengakses halaman ' .$getPage->title. ' - Public');
+        return view('frontend.public_page', compact('data'));
+    } 
     /**
      * searchPosts
      *
