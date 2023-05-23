@@ -17,6 +17,7 @@ class CreatePublicPagesTable extends Migration
             $table->id();
             $table->text('title');
             $table->text('content')->nullable();
+            $table->string('parent_menu')->nullable();
             $table->text('slug')->nullable();
             $table->string('is_trash', 1)->default('N');
             $table->integer('user_add');
