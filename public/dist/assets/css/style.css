@@ -1002,6 +1002,7 @@ ol ul {
   width: 100%;
   z-index: -4;
   /* background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important; */
+  background-size: cover;
 }
 .rbt-page-banner-wrapper .rbt-banner-image-100::after, .bg-gradient-100::after {
   /* background: linear-gradient(white 0%, rgba(255, 255, 255, 0.1) 100%); */
@@ -12102,6 +12103,7 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
 .rbt-header .mainmenu-nav .mainmenu li.has-dropdown .submenu li a.active {
   color: var(--color-primary) !important;
   background: var(--black-opacity);
+  margin-bottom: 5px;
 }
 .rbt-header .mainmenu-nav .mainmenu li.has-dropdown .submenu li ul.submenu {
   left: 100%;
@@ -28823,6 +28825,45 @@ hr.divider-1 {
 }
 .about-style-3 .about-wrapper .content .inner .text-position-welcome {
   font-family: lato,sans-serif;
+}
+.public-page .social-share-block {
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.public-page .social-share-block .post-like {
+  padding-bottom: 20px;
+}
+.public-page .social-share-block .post-like a {
+  display: flex;
+  align-items: center;
+}
+.public-page .social-share-block .post-like a i {
+  width: 40px;
+  height: 40px;
+  line-height: 34px;
+  border: 2px solid var(--color-border);
+  color: var(--color-body);
+  border-radius: 100%;
+  text-align: center;
+  margin-right: 20px;
+}
+.public-page .social-share-block .post-like a span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.public-page .social-share-block .post-like a:hover i {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.public-page .social-share-block .post-like a:hover span {
+  color: var(--color-primary);
+}
+.public-page .social-share-block .social-icon {
+  padding-bottom: 20px;
 }
 /* end Custom Style*/
 /*# sourceMappingURL=../maps/style.css.map */
