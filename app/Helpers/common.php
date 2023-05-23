@@ -115,8 +115,8 @@ if (! function_exists('publicMenus')) {
                         "submenu":[
                             {
                                 "menu": "Informasi Pelayanan",
-                                "sub_menu": "Jenis & Jadwal Pelayanan",
-                                "route_name": "jenis-dan-jadwal-pelayanan"
+                                "sub_menu": "Jenis dan Jadwal Pelayanan",
+                                "route_name": "p/jenis-dan-jadwal-pelayanan"
                             },
                             {
                                 "menu": "Informasi Pelayanan",
