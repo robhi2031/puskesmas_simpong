@@ -2,7 +2,7 @@
 @section('content')
 <div class="rbt-page-banner-wrapper pb--175">
     <!-- Start Banner BG Image  -->
-    <div class="rbt-banner-image-100" style="background: linear-gradient(45deg, rgb(0 54 20 / 84%), rgb(14 201 114 / 68%)), url({{ asset('/dist/img/bg-detail2.jpg') }}) center top no-repeat;"></div>
+    <div class="rbt-banner-image-100" style="background: linear-gradient(45deg, rgb(0 54 20 / 84%), rgb(14 201 114 / 68%)), url({{ asset('/dist/img/bg-detail2.jpg') }}) center top no-repeat; background-size: cover;"></div>
     <!-- End Banner BG Image  -->
     <div class="rbt-banner-content">
         <!-- Start Banner Content Top  -->
