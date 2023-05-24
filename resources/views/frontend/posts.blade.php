@@ -22,11 +22,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-5 mb-md-0">
-                <div class="blog-content-wrapper public-page blog-content-detail rbt-article-content-wrapper card-top-offset rounded p-0">
-                    <div class="content">
-                        <div class="container mb--50" id="container-post">
-                            <div class="row g-0"></div>
-                            <div class="row-newsmore my-5 mb--30" id="row-load_newspaper">
+                <div class="blog-content-wrapper public-page blog-content-detail rbt-article-content-wrapper card-top-offset rounded p-5">
+                    <div class="content p-0">
+                        <div class="container p-0 mb--50" id="container-post">
+                            <div class="row g-3"></div>
+                            <div class="row-newsmore" id="row-load_newspaper">
                                 <div class="col-newsmore">
                                     <div class="btn-loadmore" id="btn-load_newspaper" style="display: none;">
                                         <span>LAINNYA</span>
@@ -41,11 +41,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container px-5 mb--30">
+                        <div class="container mb--30">
                             <div class="row g-5 align-items-top mb--30">
                                 <div class="col-lg-12">
-                                    <div class="social-share-block pb-5">
-                                        <div class="fw-medium"><span>Bagikan:</span></div> 
+                                    <div class="social-share-block pb-3">
+                                        <div class="fw-medium mb-3 mb-md-0"><span>Bagikan:</span></div> 
                                         <ul class="social-icon social-default transparent-with-border align-items-center pb-0">
                                             <li>
                                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank" title="Bagikan ke facebook">
