@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-5 mb-md-0">
-                <div class="blog-content-wrapper blog-content-detail rbt-article-content-wrapper card-top-offset rounded p-0">
+                <div class="blog-content-wrapper public-page blog-content-detail rbt-article-content-wrapper card-top-offset rounded p-0">
                     <div class="content">
                         <div class="container" id="container-post">
                             <div class="row g-0"></div>
@@ -37,6 +37,35 @@
                                         <div class="main-preloader-in">
                                             <img src="{{ $data['loader-logo'] }}" alt="logo-gifloader" class="loader-logo" />
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-5 align-items-top mb--30">
+                                <div class="col-lg-12">
+                                    <div class="social-share-block pb-5">
+                                        <div class="fw-medium"><span>Bagikan:</span></div> 
+                                        <ul class="social-icon social-default transparent-with-border align-items-center pb-0">
+                                            <li>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank" title="Bagikan ke facebook">
+                                                    <i class="feather-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/share?url={{ url()->current() }}" target="_blank" title="Bagikan ke twitter">
+                                                    <i class="feather-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://api.whatsapp.com/send?text={{ url()->current() }}" target="_blank" title="Bagikan ke WhatsApp">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url()->current() }}" target="_blank" title="Bagikan ke LinkedIn">
+                                                    <i class="feather-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
