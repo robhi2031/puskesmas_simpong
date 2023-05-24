@@ -24,7 +24,7 @@
             <div class="col-md-12 mb-5 mb-md-0">
                 <div class="blog-content-wrapper public-page blog-content-detail rbt-article-content-wrapper card-top-offset rounded p-0">
                     <div class="content">
-                        <div class="container" id="container-post">
+                        <div class="container mb--50" id="container-post">
                             <div class="row g-0"></div>
                             <div class="row-newsmore my-5 mb--30" id="row-load_newspaper">
                                 <div class="col-newsmore">
@@ -40,6 +40,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="container px-5 mb--30">
                             <div class="row g-5 align-items-top mb--30">
                                 <div class="col-lg-12">
                                     <div class="social-share-block pb-5">
