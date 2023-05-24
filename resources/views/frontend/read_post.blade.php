@@ -69,8 +69,8 @@
                                 <a href="javascript:void(0);"><i class="feather-tag"></i> {{ $data['postDetail']->category }}</a>
                             </div>
                         </div>
-                        <div class="social-share-block pb-5">
-                            <div class="fw-medium"><span>Bagikan:</span></div> 
+                        <div class="social-share-block pb-3">
+                            <div class="fw-medium mb-3 mb-md-0"><span>Bagikan:</span></div> 
                             <ul class="social-icon social-default transparent-with-border align-items-center pb-0">
                                 <li>
                                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ $data['postDetail']->link_url }}" target="_blank" title="Bagikan ke facebook">
