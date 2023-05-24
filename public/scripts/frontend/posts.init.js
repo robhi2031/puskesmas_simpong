@@ -94,7 +94,7 @@ const loadApp = function() {
                             </div>`;
                         }
                         bodyContent += `<div class="col-lg-3 col-md-4 col-12">
-                            <div class="rbt-card event-grid-card variation-01 rbt-hover bg-transparent px-3">
+                            <div class="rbt-card event-grid-card variation-01 rbt-hover bg-transparent p-0 mb-3">
                                 <div class="rbt-card-img">
                                     ` +thumbPost+ `
                                 </div>
