@@ -222,7 +222,7 @@ const loadApp = function() {
                 <div class="rbt-card-img">
                     <div class="video-popup-wrapper">
                         <a href="javascript:void(0);" title="Card placeholder">
-                            <svg class="bd-placeholder-img rounded" width="100%" height="330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
+                            <svg class="bd-placeholder-img rounded-top" width="100%" height="330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
                         </a>
                     </div>
                 </div>
@@ -243,9 +243,9 @@ const loadApp = function() {
             </div>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30">`;
-        for (i = 0; i < 3; i++) {
-            bodyContent += `<div class="row mb-3">
-                    <div class="col-lg-12">
+            for (i = 0; i < 3; i++) {
+                bodyContent += `<div class="row mb-3">
+                    <div class="col-lg-12 col-md-6 col-sm-12 col-12">
                         <div class="rbt-card card-list-2 event-list-card variation-01 rbt-hover align-items-start px-3 py-4">
                             <div class="rbt-card-img">
                                 <a href="javascript:void(0);" title="Card placeholder">
@@ -268,8 +268,8 @@ const loadApp = function() {
                             </div>
                         </div>
                     </div>
-            </div>`;
-        }
+                </div>`;
+            }
         bodyContent += `</div>`;
         $('#postSimpleSection-02 .body-content').append(bodyContent);
         
@@ -306,8 +306,8 @@ const loadApp = function() {
                 bodyContent += `<div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30">
                     <div class="rbt-card variation-02 height-330 rbt-hover">
                         <div class="rbt-card-img">
-                            <div class="video-popup-wrapper mt_lg--10 mt_md--20 mt_sm--20">
-                                <img class="w-100 rbt-radius" src="` +rows[0].url_thumb+ `" alt="` +rows[0].thumb+ `">
+                            <div class="video-popup-wrapper mt_lg--10 mt_md--0 mt_sm--0">
+                                <img class="w-100 rounded-top" src="` +rows[0].url_thumb+ `" alt="` +rows[0].thumb+ `">
                                 <a class="rbt-btn rounded-player-2 position-to-top with-animation" href="javascript:void(0);" title="` +rows[0].title+ `" onclick="_showVideoModal('` +rows[0].link_embed+ `');">
                                     <span class="play-icon"></span>
                                 </a>
@@ -336,11 +336,11 @@ const loadApp = function() {
                 $.each(rows, function(key, row) {
                     if(key > 0) {
                         bodyContent += `<div class="row mb-3">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 col-12">
                                 <div class="rbt-card card-list-2 event-list-card variation-01 rbt-hover px-3 py-4">
                                     <div class="rbt-card-img">
-                                        <div class="video-popup-wrapper mt_lg--10 mt_md--20 mt_sm--20">
-                                            <img class="w-100 rbt-radius" src="` +row.url_thumb+ `" alt="` +row.thumb+ `">
+                                        <div class="video-popup-wrapper mt_lg--10 mt_md--0 mt_sm--0">
+                                            <img class="w-100 rbt-radius h-142px" src="` +row.url_thumb+ `" alt="` +row.thumb+ `">
                                             <a class="rbt-btn rounded-player-2 sm-size-50px position-to-top" href="javascript:void(0);" title="` +row.title+ `" onclick="_showVideoModal('` +row.link_embed+ `');">
                                                 <span class="play-icon"></span>
                                             </a>
