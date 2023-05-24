@@ -8,7 +8,7 @@
 /*-- Variables --*/
 :root {
   --color-primary: #009e3b;
-  --color-secondary: #00197e;
+  --color-secondary: #004224;
   --color-coral: #E9967A;
   --color-violet: #800080;
   --color-pink: #DB7093;
@@ -5541,6 +5541,13 @@ textarea:-ms-input-placeholder {
   img.h-142px {
     height: auto !important;
   }
+  img.h-145px {
+    height: auto !important;
+  }
+  img.h-180px {
+    height: auto !important;
+  }
+
   .ptb--170 {
     padding: 80px 0 !important;
   }
@@ -6234,6 +6241,16 @@ textarea:-ms-input-placeholder {
   }
 }
 @media only screen and (max-width: 767px) {
+  img.h-142px {
+    height: auto !important;
+  }
+  img.h-145px {
+    height: auto !important;
+  }
+  img.h-180px {
+    height: auto !important;
+  }
+
   .mt_sm_dec--30 {
     margin-top: -30px !important;
   }
@@ -28592,7 +28609,7 @@ height: 100px;
   left:0;
   top:0;
   border-top:2px solid transparent;
-  border-right:3px solid #204c80;
+  border-right:3px solid var(--color-primary);
   border-bottom:2px solid transparent;
   border-left:2px solid transparent;
   border-radius:50%;
