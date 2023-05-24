@@ -16,6 +16,7 @@
         methods: function (e) {
             eduJs._loadSiteInfo();
             eduJs.searchPost();
+            eduJs.tableExistsOnContent();
             eduJs.salActive();
             eduJs.menuCurrentLink();
             eduJs.eduBgCardHover();
@@ -423,6 +424,20 @@
                 $('#contentSearch .rbt-placeholder').remove(),
                 $('#contentSearch .rbt-search-content').remove();
             });
+        },
+        tableExistsOnContent: function () {
+            if($('#page-content table').length){
+                let self = '#page-content table';
+                console.log(self);
+                $(self).addClass('table table-striped');
+                $(self).prepend(`<div class="table-responsive"></div>`);
+                $(self).appendTo(`<div class="table-responsive"></div>`);
+
+
+
+                // $(self).prepend('<div class="table-responsive"></div>');
+                // $(`<div class="table-responsive"></div>`).append($(self).clone());
+            }
         },
         salActive: function () {
             sal({
