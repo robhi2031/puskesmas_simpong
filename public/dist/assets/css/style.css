@@ -5538,6 +5538,9 @@ textarea:-ms-input-placeholder {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  img.h-142px {
+    height: auto !important;
+  }
   .ptb--170 {
     padding: 80px 0 !important;
   }
@@ -28636,6 +28639,9 @@ height: 100px;
 .wh-50 {
   width: 50px !important;
   height: 50px !important;
+}
+.h-142px {
+  height: 142px !important;
 }
 .h-145px {
   height: 145px !important;
