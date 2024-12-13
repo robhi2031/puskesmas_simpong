@@ -759,7 +759,7 @@ $("#btn-save").on("click", function (e) {
     }
 
     let textConfirmSave = "Simpan perubahan data sekarang ?";
-    if (save_method == "add_category") {
+    if (save_method == "add_post") {
         textConfirmSave = "Tambahkan data sekarang ?";
     }
 

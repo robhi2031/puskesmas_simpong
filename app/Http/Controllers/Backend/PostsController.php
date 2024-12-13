@@ -26,7 +26,7 @@ class PostsController extends Controller
      */
     public function __construct() {
         $this->middleware(['direct_permission:postingan-read'])->only(['index', 'show', 'select2_category', 'show_gallery', 'get_slugpost']);
-        $this->middleware(['direct_permission:postingan-create'])->only('store');
+        $this->middleware(['direct_permission:postingan-create'])->only(['store', 'store_filegallery']);
         $this->middleware(['direct_permission:postingan-update'])->only(['update', 'update_status', 'update_itemoptionselect2', 'delete_filegallery']);
         $this->middleware(['direct_permission:postingan-delete'])->only(['delete']);
     }
